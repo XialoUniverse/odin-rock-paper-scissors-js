@@ -14,3 +14,14 @@ function getComputerChoice() {
     return choice;
 }
 
+function getHumanChoice() {
+    humanChoice = prompt('Enter your choice: rock, paper, scissors');
+    switch (humanChoice) {
+        case 'rock':
+            return 'Rock';
+        case 'paper':
+            return 'Paper';
+        case 'scissors':
+            return 'Scissors';
+    }
+}
