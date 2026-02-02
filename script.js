@@ -126,8 +126,14 @@ function playGame() {
     } else if (winner == 'computer') {
         computerScore += 1;
     }
-    console.log(`Your score is: ${humanScore}`);
-    console.log(`Computer score is: ${computerScore}`);
+
+    if (humanScore > computerScore) {
+        console.log(`You Won the Game! Final Score is: You: ${humanScore}, Computer: ${computerScore}`);
+    } else if (computerScore > humanScore) {
+        console.log(`You Lost the Game. Final Score is: You: ${humanScore}, Computer: ${computerScore}`);
+    } else {
+        console.log(`The Game was a Tie. Final Score is: You: ${humanScore}, Computer: ${computerScore}`);
+    }
 
 }
 
