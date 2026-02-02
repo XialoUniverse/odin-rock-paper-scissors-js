@@ -69,9 +69,7 @@ function playGame() {
     let humanScore = 0;
     let computerScore = 0;
 
-    console.log(humanScore);
-    console.log(computerScore);
-    
+    // one round
     let computerChoice = getComputerChoice();
     let humanChoice = getHumanChoice();
     winner = playRound(humanChoice, computerChoice);
@@ -80,9 +78,57 @@ function playGame() {
     } else if (winner == 'computer') {
         computerScore += 1;
     }
-    
-        console.log(humanScore);
-        console.log(computerScore);
+    console.log(`Your score is: ${humanScore}`);
+    console.log(`Computer score is: ${computerScore}`);
+
+    // one round
+    computerChoice = getComputerChoice();
+    humanChoice = getHumanChoice();
+    winner = playRound(humanChoice, computerChoice);
+    if (winner == 'human') {
+        humanScore += 1;
+    } else if (winner == 'computer') {
+        computerScore += 1;
+    }
+    console.log(`Your score is: ${humanScore}`);
+    console.log(`Computer score is: ${computerScore}`);
+
+    // one round
+    computerChoice = getComputerChoice();
+    humanChoice = getHumanChoice();
+    winner = playRound(humanChoice, computerChoice);
+    if (winner == 'human') {
+        humanScore += 1;
+    } else if (winner == 'computer') {
+        computerScore += 1;
+    }
+    console.log(`Your score is: ${humanScore}`);
+    console.log(`Computer score is: ${computerScore}`);
+
+    // one round
+    computerChoice = getComputerChoice();
+    humanChoice = getHumanChoice();
+    winner = playRound(humanChoice, computerChoice);
+    if (winner == 'human') {
+        humanScore += 1;
+    } else if (winner == 'computer') {
+        computerScore += 1;
+    }
+    console.log(`Your score is: ${humanScore}`);
+    console.log(`Computer score is: ${computerScore}`);
+
+    // one round
+    computerChoice = getComputerChoice();
+    humanChoice = getHumanChoice();
+    winner = playRound(humanChoice, computerChoice);
+    if (winner == 'human') {
+        humanScore += 1;
+    } else if (winner == 'computer') {
+        computerScore += 1;
+    }
+    console.log(`Your score is: ${humanScore}`);
+    console.log(`Computer score is: ${computerScore}`);
+
 }
 
 playGame();
