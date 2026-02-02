@@ -74,7 +74,7 @@ function playGame() {
     
     let computerChoice = getComputerChoice();
     let humanChoice = getHumanChoice();
-    winner = playRound(computerChoice, humanChoice);
+    winner = playRound(humanChoice, computerChoice);
     if (winner == 'human') {
         humanScore += 1;
     } else if (winner == 'computer') {
