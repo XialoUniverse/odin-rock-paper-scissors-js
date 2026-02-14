@@ -84,6 +84,12 @@ async function playGame() {
         } else if (winner == 'computer') {
             computerScore += 1;
         }
+        let resultString = document.createElement('p');
+        resultString.innerText = `Your score: ${humanScore}, computer score: ${computerScore}`;
+        let resultsDisplay = document.querySelector('.display-results');
+        resultsDisplay.innerText = '';
+        resultsDisplay.appendChild(resultString);
+
         console.log(`Your score is: ${humanScore}`);
         console.log(`Computer score is: ${computerScore}`);
     }
