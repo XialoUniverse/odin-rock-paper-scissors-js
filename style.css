@@ -20,7 +20,7 @@ button {
     justify-content: space-around;
 }
 
-.cpu-choice, .display-results {
+.cpu-choice, .display-results, .display-winner {
     display: flex;
     justify-content: center;
     align-items: center;

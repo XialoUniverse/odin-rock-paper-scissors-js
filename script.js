@@ -94,13 +94,22 @@ async function playGame() {
         console.log(`Computer score is: ${computerScore}`);
     }
 
+    let winnerString = document.createElement('p');
+    winnerString.innerText = `Your score: ${humanScore}, computer score: ${computerScore}`;
+    
     if (humanScore > computerScore) {
-        console.log(`You Won the Game! Final Score is: You: ${humanScore}, Computer: ${computerScore}`);
+        winnerString.innerText = `You Won the Game! Final Score is: You: ${humanScore}, Computer: ${computerScore}`
     } else if (computerScore > humanScore) {
-        console.log(`You Lost the Game. Final Score is: You: ${humanScore}, Computer: ${computerScore}`);
+        winnerString.innerText = `You Lost the Game. Final Score is: You: ${humanScore}, Computer: ${computerScore}`
     } else {
-        console.log(`The Game was a Tie. Final Score is: You: ${humanScore}, Computer: ${computerScore}`);
+        winnerString.innerText = `The Game was a Tie. Final Score is: You: ${humanScore}, Computer: ${computerScore}`
     }
+
+    let winnerDisplay = document.createElement('div');
+    winnerDisplay.classList.add('display-winner')
+    winnerDisplay.appendChild(winnerString);
+    let mainBody = document.querySelector('body');
+    mainBody.appendChild(winnerDisplay);
 
 }
 
