@@ -28,6 +28,11 @@ function getHumanChoice() {
 
 function playRound(humanChoice, computerChoice) {
     console.log(`The computer chose: ${computerChoice}`)
+    let cpuChoiceDisplay = document.createElement('p');
+    cpuChoiceDisplay.innerText = `The Computer Chose: ${computerChoice}`;
+    let displayDiv = document.querySelector('.cpu-choice');
+    displayDiv.innerText = '';
+    displayDiv.appendChild(cpuChoiceDisplay);
     switch (humanChoice) {
         case 'Rock':
             if (computerChoice == 'Rock') {
