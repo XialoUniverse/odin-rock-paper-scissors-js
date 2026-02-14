@@ -74,7 +74,7 @@ async function playGame() {
     let humanScore = 0;
     let computerScore = 0;
 
-    for (let i = 0; i < 5; i++) {
+    while (humanScore < 5 && computerScore < 5) {
         let computerChoice = getComputerChoice();
         let humanChoice = await getHumanChoice();
     
