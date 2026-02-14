@@ -1,0 +1,33 @@
+body {
+    background-color: black;
+}
+
+p {
+    color: white;
+    font-size: 42px;
+}
+
+button {
+    background-color: turquoise;
+    color: black;
+    padding: 10px 30px;
+    border: 5px solid white;
+    border-radius: 10px;
+}
+
+.play-buttons {
+    display: flex;
+    justify-content: space-around;
+}
+
+.cpu-choice, .display-results {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 20px;
+    height: 100px;
+    background-color: gray;
+    border: 2px solid white;
+    border-radius: 20px;
+}
+

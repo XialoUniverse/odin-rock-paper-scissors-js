@@ -14,16 +14,16 @@ function getComputerChoice() {
 }
 
 function getHumanChoice() {
-    let humanChoice = prompt('Enter your choice: rock, paper, scissors');
-    humanChoice = humanChoice.toLowerCase();
-    switch (humanChoice) {
-        case 'rock':
-            return 'Rock';
-        case 'paper':
-            return 'Paper';
-        case 'scissors':
-            return 'Scissors';
-    }
+    return new Promise((resolve) => {
+        let buttons = document.querySelectorAll('button');
+        for (const btn of buttons) {
+            btn.addEventListener('click', (event) => {
+                event.preventDefault();
+                let humanChoice = btn.innerText;
+                resolve(humanChoice);
+            })
+        }
+    }) 
 }
 
 function playRound(humanChoice, computerChoice) {
@@ -65,13 +65,14 @@ function playRound(humanChoice, computerChoice) {
     }
 }
 
-function playGame() {
+async function playGame() {
     let humanScore = 0;
     let computerScore = 0;
 
     // one round
     let computerChoice = getComputerChoice();
-    let humanChoice = getHumanChoice();
+    let humanChoice = await getHumanChoice();
+
     winner = playRound(humanChoice, computerChoice);
     if (winner == 'human') {
         humanScore += 1;
