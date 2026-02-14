@@ -69,63 +69,18 @@ async function playGame() {
     let humanScore = 0;
     let computerScore = 0;
 
-    // one round
-    let computerChoice = getComputerChoice();
-    let humanChoice = await getHumanChoice();
-
-    winner = playRound(humanChoice, computerChoice);
-    if (winner == 'human') {
-        humanScore += 1;
-    } else if (winner == 'computer') {
-        computerScore += 1;
-    }
-    console.log(`Your score is: ${humanScore}`);
-    console.log(`Computer score is: ${computerScore}`);
-
-    // one round
-    computerChoice = getComputerChoice();
-    humanChoice = getHumanChoice();
-    winner = playRound(humanChoice, computerChoice);
-    if (winner == 'human') {
-        humanScore += 1;
-    } else if (winner == 'computer') {
-        computerScore += 1;
-    }
-    console.log(`Your score is: ${humanScore}`);
-    console.log(`Computer score is: ${computerScore}`);
-
-    // one round
-    computerChoice = getComputerChoice();
-    humanChoice = getHumanChoice();
-    winner = playRound(humanChoice, computerChoice);
-    if (winner == 'human') {
-        humanScore += 1;
-    } else if (winner == 'computer') {
-        computerScore += 1;
-    }
-    console.log(`Your score is: ${humanScore}`);
-    console.log(`Computer score is: ${computerScore}`);
-
-    // one round
-    computerChoice = getComputerChoice();
-    humanChoice = getHumanChoice();
-    winner = playRound(humanChoice, computerChoice);
-    if (winner == 'human') {
-        humanScore += 1;
-    } else if (winner == 'computer') {
-        computerScore += 1;
-    }
-    console.log(`Your score is: ${humanScore}`);
-    console.log(`Computer score is: ${computerScore}`);
-
-    // one round
-    computerChoice = getComputerChoice();
-    humanChoice = getHumanChoice();
-    winner = playRound(humanChoice, computerChoice);
-    if (winner == 'human') {
-        humanScore += 1;
-    } else if (winner == 'computer') {
-        computerScore += 1;
+    for (let i = 0; i < 5; i++) {
+        let computerChoice = getComputerChoice();
+        let humanChoice = await getHumanChoice();
+    
+        winner = playRound(humanChoice, computerChoice);
+        if (winner == 'human') {
+            humanScore += 1;
+        } else if (winner == 'computer') {
+            computerScore += 1;
+        }
+        console.log(`Your score is: ${humanScore}`);
+        console.log(`Computer score is: ${computerScore}`);
     }
 
     if (humanScore > computerScore) {
