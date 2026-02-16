@@ -1,3 +1,6 @@
+let humanScore = 0;
+let computerScore = 0;
+
 function getComputerChoice() {
     let choice;
     let randomNumber = (Math.floor(Math.random() * 100)) % 3;
@@ -11,19 +14,6 @@ function getComputerChoice() {
         choice = 'Scissors';
     }
     return choice;
-}
-
-function getHumanChoice() {
-    return new Promise((resolve) => {
-        let buttons = document.querySelectorAll('button');
-        for (const btn of buttons) {
-            btn.addEventListener('click', (event) => {
-                event.preventDefault();
-                let humanChoice = btn.innerText;
-                resolve(humanChoice);
-            })
-        }
-    }) 
 }
 
 function playRound(humanChoice, computerChoice) {
@@ -70,47 +60,52 @@ function playRound(humanChoice, computerChoice) {
     }
 }
 
-async function playGame() {
-    let humanScore = 0;
-    let computerScore = 0;
+function playGame(humanChoice) {
+    if (humanScore > 4 || computerScore > 4) {
+        return;
+    }
+    let computerChoice = getComputerChoice();
 
-    while (humanScore < 5 && computerScore < 5) {
-        let computerChoice = getComputerChoice();
-        let humanChoice = await getHumanChoice();
-    
-        winner = playRound(humanChoice, computerChoice);
-        if (winner == 'human') {
-            humanScore += 1;
-        } else if (winner == 'computer') {
-            computerScore += 1;
+    winner = playRound(humanChoice, computerChoice);
+    if (winner == 'human') {
+        humanScore += 1;
+    } else if (winner == 'computer') {
+        computerScore += 1;
+    }
+    let resultString = document.createElement('p');
+    resultString.innerText = `Your score: ${humanScore}, computer score: ${computerScore}`;
+    let resultsDisplay = document.querySelector('.display-results');
+    resultsDisplay.innerText = '';
+    resultsDisplay.appendChild(resultString);
+
+    console.log(`Your score is: ${humanScore}`);
+    console.log(`Computer score is: ${computerScore}`);
+
+    if (humanScore > 4 || computerScore > 4) {
+        let winnerString = document.createElement('p');
+
+        if (humanScore > computerScore) {
+            winnerString.innerText = `You Won the Game! Final Score is: You: ${humanScore}, Computer: ${computerScore}`
+        } else if (computerScore > humanScore) {
+            winnerString.innerText = `You Lost the Game. Final Score is: You: ${humanScore}, Computer: ${computerScore}`
+        } else {
+            winnerString.innerText = `The Game was a Tie. Final Score is: You: ${humanScore}, Computer: ${computerScore}`
         }
-        let resultString = document.createElement('p');
-        resultString.innerText = `Your score: ${humanScore}, computer score: ${computerScore}`;
-        let resultsDisplay = document.querySelector('.display-results');
-        resultsDisplay.innerText = '';
-        resultsDisplay.appendChild(resultString);
-
-        console.log(`Your score is: ${humanScore}`);
-        console.log(`Computer score is: ${computerScore}`);
+        let winnerDisplay = document.createElement('div');
+        winnerDisplay.classList.add('display-winner')
+        winnerDisplay.appendChild(winnerString);
+        let mainBody = document.querySelector('body');
+        mainBody.appendChild(winnerDisplay);
     }
-
-    let winnerString = document.createElement('p');
-    winnerString.innerText = `Your score: ${humanScore}, computer score: ${computerScore}`;
-    
-    if (humanScore > computerScore) {
-        winnerString.innerText = `You Won the Game! Final Score is: You: ${humanScore}, Computer: ${computerScore}`
-    } else if (computerScore > humanScore) {
-        winnerString.innerText = `You Lost the Game. Final Score is: You: ${humanScore}, Computer: ${computerScore}`
-    } else {
-        winnerString.innerText = `The Game was a Tie. Final Score is: You: ${humanScore}, Computer: ${computerScore}`
-    }
-
-    let winnerDisplay = document.createElement('div');
-    winnerDisplay.classList.add('display-winner')
-    winnerDisplay.appendChild(winnerString);
-    let mainBody = document.querySelector('body');
-    mainBody.appendChild(winnerDisplay);
 
 }
 
-playGame();
+
+let buttons = document.querySelectorAll('button');
+for (const btn of buttons) {
+    btn.addEventListener('click', (event) => {
+        event.preventDefault();
+        let humanChoice = btn.innerText;
+        playGame(humanChoice);
+    })
+}
